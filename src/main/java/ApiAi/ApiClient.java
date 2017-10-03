@@ -11,43 +11,25 @@ import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 
 public class ApiClient {
-	private AIConfiguration configuration = new AIConfiguration("21570048dc7b4ac4af785340169e9eb4");
-	private AIDataService dataService = new AIDataService(configuration);
-
+	private AIConfiguration aiConfiguration;
+	private AIDataService dataService;
 	
+	public ApiClient(String token) {
+		this.aiConfiguration = new AIConfiguration(token);
+		this.dataService = new AIDataService(aiConfiguration);
+	}
+
 	public String getConversation(String message) {
-		
 		AIRequest request = new AIRequest(message);
         AIResponse response;
 		try {
 			response = dataService.request(request);
-//	        System.out.println(response.getResult().getFulfillment().getSpeech());
 	        return response.getResult().getFulfillment().getSpeech();
 
 		} catch (AIServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "no message...";
+		return "Something went wrong.";
 		
 	}
-	
-	
-//	  public static void main(String[] args) {
-//		  System.out.print("test");
-//		  AIConfiguration configuration = new AIConfiguration("21570048dc7b4ac4af785340169e9eb4");
-//		  AIDataService dataService = new AIDataService(configuration);
-		  
-//          AIRequest request = new AIRequest("Hello");
-//          AIResponse response;
-//		try {
-//			response = dataService.request(request);
-//	        System.out.println(response.getResult().getFulfillment().getSpeech());
-//
-//		} catch (AIServiceException e) {
-			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
-//	  }
 }

@@ -16,11 +16,8 @@ public class ApiAiTest {
 	
 	private String input;
 	private String expectOutput;
-	private ApiClient api = new ApiClient();
-
-//	@Before
-//	public void setUp() throws Exception {
-//	}
+	private String token = "21570048dc7b4ac4af785340169e9eb4";
+	private ApiClient api = new ApiClient(token);
 	
 	public ApiAiTest(String input, String output) {
 		this.input = input;
