@@ -12,18 +12,19 @@ public class ApiAiTestingMockito {
 	private ApiClient api = mock(ApiClient.class);
 	private User user = mock(User.class);
 	//set a new bot
-	private Aliot bot = new Aliot(api, user);
+	private ChatRoom bot = new ChatRoom(api, user);
 	
 	@Test
 	public void test() {
 		//set test message
-		String testMessage = "Hello World";
+		String testMessage = "Hello";
 		
 		//set behavior in the method
-		when(api.getConversation(testMessage)).thenReturn("Hello there");
+		when(api.getConversation(testMessage)).thenReturn("Hello User");
 		when(user.getUserName()).thenReturn("User1");
+		
 		//call method
-		bot.makeChatNode(testMessage);
+		bot.sendMessage(testMessage);
 		
 		//verify if the behavior get involved
 		verify(api).getConversation(testMessage);
