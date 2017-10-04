@@ -20,5 +20,12 @@
   		<version>1.9.5</version>
   		<scope>test</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>org.jacoco</groupId>
+  		<artifactId>jacoco-maven-plugin</artifactId>
+  		<version>0.7.9</version>
+  		<type>maven-plugin</type>
+  		<scope>test</scope>
+  	</dependency>
   </dependencies>
 </project>
